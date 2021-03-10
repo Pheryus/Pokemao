@@ -26,6 +26,7 @@ public class GlobalData : MonoBehaviour
 
     public Skill errorSkill;
 
+    public ElementTable elementTable;
 
     public List<Artefact> artefacts;
 
@@ -85,18 +86,13 @@ public class GlobalData : MonoBehaviour
         return "";
     }
 
-    public bool SuperEffective (Skill skill, GameMonster target) {
-        if (skill.skillElement == Element.water && target.monsterElement == Element.fire) {
-            return true;
-        }
-        return false;
+    public bool SuperEffective (Element element, Element target) {
+
+        return elementTable.CheckTypeEffectiveness(element, target, TypeEffectiveness.superEffective);
     }
 
-    public bool LessEffective (Skill skill, GameMonster target) {
-        if (skill.skillElement == Element.fire && (target.monsterElement == Element.fire || target.monsterElement == Element.water)) {
-            return true;
-        }
-        return false;
+    public bool LessEffective (Element element, Element target) {
+        return elementTable.CheckTypeEffectiveness(element, target, TypeEffectiveness.lessEffective);
     }
 
     public Artefact GetRandomArtefact() {

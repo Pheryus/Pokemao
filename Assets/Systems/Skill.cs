@@ -117,10 +117,10 @@ public class Skill : ScriptableObject {
             dmg *= 1.25f;
         }
         dmg = Mathf.Max(dmg, 2);
-        if (GlobalData.i.SuperEffective(skill, target)) {
+        if (GlobalData.i.SuperEffective(skill.skillElement, target.monsterElement)) {
             dmg *= 1.5f;
         }
-        else if (GlobalData.i.LessEffective (skill, target)) {
+        else if (GlobalData.i.LessEffective (skill.skillElement, target.monsterElement)) {
             dmg *= 0.66f;
         }
 

@@ -18,7 +18,9 @@ MonoBehaviour:
   onHitACC: 90
   skillName: Blaze
   isSpecial: 0
-  onHitEffects: []
+  onHitEffects:
+  - effectType: 1
+    intensity: 3
   onCastEffects: []
   skillElement: 1
   _manaCost: 2

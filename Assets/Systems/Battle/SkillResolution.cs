@@ -63,13 +63,14 @@ public class SkillResolution : MonoBehaviour {
                     target.gameMonster.actualHp -= (int)dmg;
                     
                     yield return en.StartCoroutine(en.UpdateMonsterBar(hpBar: true, target, target.gameMonster.pctHp));
-                    if (GlobalData.i.SuperEffective(skillCast.skill, target.gameMonster)) {
+
+                    if (GlobalData.i.SuperEffective(skillCast.skill.skillElement, target.gameMonster.monsterElement)) {
                         BattleAction.isSuperEffective?.Invoke();
                         while (BattleMsg.instance.state != BattleMsg.State.none) {
                             yield return null;
                         }
                     }
-                    if (GlobalData.i.LessEffective(skillCast.skill, target.gameMonster)) {
+                    if (GlobalData.i.LessEffective(skillCast.skill.skillElement, target.gameMonster.monsterElement)) {
                         BattleAction.isLessEffective?.Invoke();
                         while (BattleMsg.instance.state != BattleMsg.State.none) {
                             yield return null;

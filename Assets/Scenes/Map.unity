@@ -2996,13 +2996,18 @@ PrefabInstance:
       objectReference: {fileID: 18539168}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27,
         type: 3}
+      propertyPath: yOffset
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27,
+        type: 3}
       propertyPath: orientation
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5337413451386887161, guid: 6dc8f4ee6004b5345a5925b01e34cb27,
         type: 3}
       propertyPath: orientationOffset
-      value: -6
+      value: -3.31
       objectReference: {fileID: 0}
     - target: {fileID: 6173653652465991376, guid: 6dc8f4ee6004b5345a5925b01e34cb27,
         type: 3}
@@ -12165,6 +12170,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f912d7bb0ca9cca49bb17892bc5b343c, type: 2}
   errorMonsterSO: {fileID: 11400000, guid: e3166ae3ac150ae4f8138b37d88c1193, type: 2}
   errorSkill: {fileID: 11400000, guid: 5b49d7c7aa3b66d43b80d55c285b6609, type: 2}
+  elementTable: {fileID: 11400000, guid: 8bb502da28cc0d049ab5436ff9d76dec, type: 2}
   artefacts:
   - {fileID: 11400000, guid: 035289362f728764586f6cb54e1f6aae, type: 2}
   - {fileID: 11400000, guid: e05f7c8a4ec840d40be77c69b260c1bb, type: 2}

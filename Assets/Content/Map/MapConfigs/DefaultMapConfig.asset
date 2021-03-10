@@ -36,7 +36,7 @@ MonoBehaviour:
     max: 3
   layers:
     array:
-    - nodeType: 3
+    - nodeType: 15
       distanceFromPreviousLayer:
         min: 2
         max: 3

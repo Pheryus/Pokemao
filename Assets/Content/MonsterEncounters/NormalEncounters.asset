@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   element: 0
   monsters:
-  - monsterSO: {fileID: 0}
+  - monsterSO: {fileID: 11400000, guid: 1e9ff212848c2e649ba5e5c1ff0c2a4b, type: 2}
+    difficulty: 0
+  - monsterSO: {fileID: 11400000, guid: 9167d4879aa8e3d4d9e96ced4723e48a, type: 2}
     difficulty: 0

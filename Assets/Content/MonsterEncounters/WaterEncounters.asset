@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb38accf7b149e4ba77b3bc73ad54ff, type: 3}
   m_Name: WaterEncounters
   m_EditorClassIdentifier: 
-  element: 0
+  element: 2
   monsters:
-  - monsterSO: {fileID: 0}
-    difficulty: 0
-  - monsterSO: {fileID: 0}
-    difficulty: 0
-  - monsterSO: {fileID: 0}
+  - monsterSO: {fileID: 11400000, guid: dccfecf68abc9004f91a49ce301542b2, type: 2}
     difficulty: 0
