@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eb38accf7b149e4ba77b3bc73ad54ff, type: 3}
   m_Name: WindEncounters
   m_EditorClassIdentifier: 
-  element: 0
+  element: 5
   monsters:
-  - monsterSO: {fileID: 0}
-    difficulty: 0
-  - monsterSO: {fileID: 0}
-    difficulty: 0
-  - monsterSO: {fileID: 0}
+  - monsterSO: {fileID: 11400000, guid: 46c3dfbfdad5b394aa0b86b43f70a7cb, type: 2}
     difficulty: 0

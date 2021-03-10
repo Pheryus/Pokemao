@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeamEncounterSO
   difficulty: 0
   team:
-  - {fileID: 11400000, guid: 9167d4879aa8e3d4d9e96ced4723e48a, type: 2}
-  - {fileID: 11400000, guid: 9167d4879aa8e3d4d9e96ced4723e48a, type: 2}
+  - {fileID: 11400000, guid: 4d5a6f7b66836ce4d8c9f74dd3981a19, type: 2}
+  - {fileID: 11400000, guid: ba691838b7fd44847a2f918fffb8da58, type: 2}

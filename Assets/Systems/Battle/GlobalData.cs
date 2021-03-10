@@ -24,6 +24,8 @@ public class GlobalData : MonoBehaviour
 
     public MonsterSO errorMonsterSO;
 
+    public Skill errorSkill;
+
 
     public List<Artefact> artefacts;
 
@@ -118,12 +120,15 @@ public class GlobalData : MonoBehaviour
     }
 
     public Skill GetRandomSkill (Element element) {
-        while (true) {
+        int tries = 0;
+        while (tries < 1000) {
             Skill skill = skills[Random.Range(0, skills.Length)];
             if (skill.skillElement == element) {
                 return skill;
             }
+            tries++;
         }
+        return errorSkill;
     }
 
     public MonsterStat GetRandomStat() {

@@ -16,7 +16,3 @@ MonoBehaviour:
   monsters:
   - monsterSO: {fileID: 0}
     difficulty: 0
-  - monsterSO: {fileID: 0}
-    difficulty: 0
-  - monsterSO: {fileID: 0}
-    difficulty: 0

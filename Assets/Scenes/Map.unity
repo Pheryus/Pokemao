@@ -12095,6 +12095,7 @@ MonoBehaviour:
   resourcesCanvas: {fileID: 197057824}
   manaText: {fileID: 0}
   pokebolaTexts: {fileID: 2032976067}
+  artefacts: []
 --- !u!114 &1982147491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12162,7 +12163,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5af12febd6969784784c21a648818db5, type: 2}
   teamEncounters:
   - {fileID: 11400000, guid: f912d7bb0ca9cca49bb17892bc5b343c, type: 2}
-  errorMonsterSO: {fileID: 11400000, guid: 3a2987ae98a03ff47a93264e904ca379, type: 2}
+  errorMonsterSO: {fileID: 11400000, guid: e3166ae3ac150ae4f8138b37d88c1193, type: 2}
+  errorSkill: {fileID: 11400000, guid: 5b49d7c7aa3b66d43b80d55c285b6609, type: 2}
   artefacts:
   - {fileID: 11400000, guid: 035289362f728764586f6cb54e1f6aae, type: 2}
   - {fileID: 11400000, guid: e05f7c8a4ec840d40be77c69b260c1bb, type: 2}
