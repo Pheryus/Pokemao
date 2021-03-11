@@ -24,7 +24,13 @@ MonoBehaviour:
   onCastEffects: []
   skillElement: 1
   _manaCost: 2
-  info: ' If hits, target suffer burn 3.'
+  info: 'Channel fast to deal damage and Burn 3 the target enemy.
+
+
+    [Wisdom x
+    Vigor]'
   skillTarget: 0
   skillSpeed: 35
   extraEffect: 0
+  attackStatus: 2
+  defenseStatus: 0

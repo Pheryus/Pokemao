@@ -19,18 +19,16 @@ MonoBehaviour:
   onHitEffects: []
   onCastEffects:
   - effectType: 3
-    intensity: 8
-    onCastACC: 100
-    target: 2
-  - effectType: 3
-    intensity: 8
+    intensity: 10
     onCastACC: 100
     target: 2
   skillElement: 4
   _manaCost: 3
-  info: Create a shield to physical attacks - Block 10.
+  info: 'Channel fast to gain Block 10.
+
+'
   skillTarget: 2
-  skillSpeed: 25
+  skillSpeed: 30
   extraEffect: 0
   attackStatus: 2
   defenseStatus: 0

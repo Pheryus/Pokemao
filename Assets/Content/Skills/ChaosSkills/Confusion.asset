@@ -10,31 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a331bbc92130e1a41a23ac37adce3e00, type: 3}
-  m_Name: Fire Skin
+  m_Name: Confusion
   m_EditorClassIdentifier: 
-  dmgSkills: []
+  dmgSkills:
+  - baseDmg: 12
+    acc: 100
   onHitACC: 100
-  skillName: Fire Skin
+  skillName: Scream
   isSpecial: 1
-  onHitEffects: []
-  onCastEffects:
-  - effectType: 3
-    intensity: 5
-    onCastACC: 100
-    target: 2
-  - effectType: 13
-    intensity: 5
-    onCastACC: 100
-    target: 2
-  skillElement: 1
-  _manaCost: 2
-  info: 'Self.
+  onHitEffects:
+  - effectType: 26
+    intensity: 0
+  onCastEffects: []
+  skillElement: 7
+  _manaCost: 4
+  info: 'Channel to deal damage and confuse your opponent, reducing its channel speed
+    by 25%.
 
-    Block 5.
 
-    Burn 5 on contact.'
-  skillTarget: 2
-  skillSpeed: 0
+    [Wisdom x Focus]'
+  skillTarget: 0
+  skillSpeed: 15
   extraEffect: 0
-  attackStatus: 0
-  defenseStatus: 0
+  attackStatus: 2
+  defenseStatus: 3

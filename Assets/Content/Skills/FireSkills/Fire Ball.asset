@@ -14,15 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmgSkills:
   - baseDmg: 12
-    acc: 90
-  onHitACC: 90
+    acc: 100
+  onHitACC: 100
   skillName: Fire Ball
   isSpecial: 1
   onHitEffects: []
   onCastEffects: []
   skillElement: 1
-  _manaCost: 2
-  info: Hit all the enemies.
+  _manaCost: 4
+  info: 'Channel to throw a fireball that hit all enemies.
+
+
+    [Focus x Agility]'
   skillTarget: 1
-  skillSpeed: 35
+  skillSpeed: 15
   extraEffect: 0
+  attackStatus: 3
+  defenseStatus: 1

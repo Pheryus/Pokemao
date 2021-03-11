@@ -8,7 +8,7 @@ public enum ExtraEffect { none, sufferHalfDamage, sufferFiveDamage, ignoreArmor}
 [System.Serializable]
 public class Effect
 {
-    public enum EffectType { regenerate, burn, poison, block, magicBlock, statusBuff, statusDebuff, protection, piercing, blind, removeBurn, removePoison, activateNextTurn, skipNextTurn, loseWhenTakeDamage, burnOnContact, vigorBuff, focusBuff, wisdomBuff, spcDefenseBuff, agilityBuff, attackDebuff, defenseDebuff, spcAttackDebuff, spcDefenseDebuff, speedDebuff, cancelChannel};
+    public enum EffectType { regenerate, burn, poison, block, magicBlock, protection, piercing, blind, removeBurn, removePoison, activateNextTurn, skipNextTurn, loseWhenTakeDamage, burnOnContact, vigorBuff, focusBuff, wisdomBuff, spcDefenseBuff, agilityBuff, attackDebuff, defenseDebuff, spcAttackDebuff, spcDefenseDebuff, agilityDebuff, cancelChannel, channelSpeedBuff, channelSpeedDebuff, slow, haste};
     public EffectType effectType;
     public int intensity;
     

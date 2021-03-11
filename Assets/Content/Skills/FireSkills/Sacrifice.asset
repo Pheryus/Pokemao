@@ -18,15 +18,21 @@ MonoBehaviour:
   isSpecial: 1
   onHitEffects: []
   onCastEffects:
-  - effectType: 16
-    intensity: 6
+  - effectType: 14
+    intensity: 4
+    onCastACC: 100
+    target: 2
+  - effectType: 18
+    intensity: 4
     onCastACC: 100
     target: 2
   skillElement: 1
   _manaCost: 2
   info: 'Suffer 5 damage.
 
-    Gain +6 Attack.'
+    Gain 4 Vigor and Agility.'
   skillTarget: 2
-  skillSpeed: 35
+  skillSpeed: 30
   extraEffect: 2
+  attackStatus: 0
+  defenseStatus: 0

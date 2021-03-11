@@ -21,8 +21,10 @@ MonoBehaviour:
   onHitEffects: []
   onCastEffects: []
   skillElement: 1
-  _manaCost: 2
-  info: Ignore armor.
+  _manaCost: 0
+  info: "A perfect strike. \nCan't be blocked.\n\n[Agility x Vigor]"
   skillTarget: 0
-  skillSpeed: 35
+  skillSpeed: 25
   extraEffect: 3
+  attackStatus: 1
+  defenseStatus: 0

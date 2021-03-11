@@ -29,8 +29,13 @@ MonoBehaviour:
   onHitEffects: []
   onCastEffects: []
   skillElement: 1
-  _manaCost: 2
-  info: Hit five times in a row.
+  _manaCost: 1
+  info: 'Hit five times in a row.
+
+
+    [Vigor x Agility]'
   skillTarget: 0
-  skillSpeed: 35
+  skillSpeed: 25
   extraEffect: 0
+  attackStatus: 3
+  defenseStatus: 1

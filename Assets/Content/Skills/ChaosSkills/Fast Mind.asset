@@ -10,31 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a331bbc92130e1a41a23ac37adce3e00, type: 3}
-  m_Name: Fire Skin
+  m_Name: Fast Mind
   m_EditorClassIdentifier: 
   dmgSkills: []
   onHitACC: 100
-  skillName: Fire Skin
+  skillName: Fast Mind
   isSpecial: 1
   onHitEffects: []
   onCastEffects:
-  - effectType: 3
-    intensity: 5
+  - effectType: 27
+    intensity: 25
     onCastACC: 100
-    target: 2
-  - effectType: 13
-    intensity: 5
+    target: 3
+  - effectType: 26
+    intensity: 25
     onCastACC: 100
-    target: 2
-  skillElement: 1
+    target: 3
+  skillElement: 7
   _manaCost: 2
-  info: 'Self.
-
-    Block 5.
-
-    Burn 5 on contact.'
-  skillTarget: 2
+  info: A ally gain 50% channel speed, but it's attack speed is reduced by 25%.
+  skillTarget: 3
   skillSpeed: 0
   extraEffect: 0
-  attackStatus: 0
+  attackStatus: 3
   defenseStatus: 0

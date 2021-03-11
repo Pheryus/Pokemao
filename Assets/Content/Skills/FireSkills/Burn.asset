@@ -19,12 +19,14 @@ MonoBehaviour:
   onHitEffects: []
   onCastEffects:
   - effectType: 1
-    intensity: 6
+    intensity: 7
     onCastACC: 100
     target: 0
   skillElement: 1
   _manaCost: 2
-  info: Target suffers Burn 7.
+  info: Your enemy target immediatly Burn 7.
   skillTarget: 0
-  skillSpeed: 35
+  skillSpeed: 0
   extraEffect: 0
+  attackStatus: 0
+  defenseStatus: 0

@@ -23,10 +23,13 @@ MonoBehaviour:
     intensity: 0
   onCastEffects: []
   skillElement: 7
-  _manaCost: 4
-  info: Scares the enemy, cancelling its channeling.
+  _manaCost: 3
+  info: 'Scares the enemy, dealing a small amount of damage and cancelling its channeling.
+
+    [Focus
+    x Wisdom]'
   skillTarget: 0
   skillSpeed: 0
   extraEffect: 0
   attackStatus: 3
-  defenseStatus: 0
+  defenseStatus: 2

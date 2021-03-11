@@ -24,7 +24,15 @@ MonoBehaviour:
   onCastEffects: []
   skillElement: 1
   _manaCost: 2
-  info: "Deal 10 fire damage.\n If hits, target suffer burn 3."
+  info: 'Concentrate to find a chance to strike with a crushing blow.
+
+    The target
+    suffer burn 3.
+
+
+    [Vigor x Vigor]'
   skillTarget: 0
-  skillSpeed: 35
+  skillSpeed: 20
   extraEffect: 0
+  attackStatus: 0
+  defenseStatus: 0

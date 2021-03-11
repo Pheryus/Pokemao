@@ -22,7 +22,10 @@ MonoBehaviour:
   onCastEffects: []
   skillElement: 4
   _manaCost: 0
-  info: Channel to shake the ground, damaging EVERYONE.
+  info: 'Channel to shake the ground, damaging EVERYONE.
+
+
+    [Wisdom x Vigor]'
   skillTarget: 5
   skillSpeed: 20
   extraEffect: 0

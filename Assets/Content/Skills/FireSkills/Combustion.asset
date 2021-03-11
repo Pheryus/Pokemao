@@ -22,7 +22,17 @@ MonoBehaviour:
   onCastEffects: []
   skillElement: 1
   _manaCost: 2
-  info: You suffer half of damage dealt.
+  info: 'Channel fast to deal a large amount of damage.
+
+    You suffer half of damage
+    dealt.
+
+
+    [Wisdom x Agility]
+
+'
   skillTarget: 0
   skillSpeed: 35
   extraEffect: 1
+  attackStatus: 2
+  defenseStatus: 1

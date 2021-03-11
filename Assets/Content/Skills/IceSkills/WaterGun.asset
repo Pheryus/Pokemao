@@ -20,8 +20,11 @@ MonoBehaviour:
   isSpecial: 1
   onHitEffects: []
   onCastEffects: []
-  skillElement: 2
-  manaCost: 0
+  skillElement: 6
+  _manaCost: 0
   info: Powerful blast of water.
   skillTarget: 0
+  skillSpeed: 0
   extraEffect: 0
+  attackStatus: 0
+  defenseStatus: 0

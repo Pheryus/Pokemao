@@ -22,7 +22,10 @@ MonoBehaviour:
   onCastEffects: []
   skillElement: 7
   _manaCost: 0
-  info: Concentrate for a moment to deal a strong blow.
+  info: 'Concentrate for a moment to deal a strong blow.
+
+
+    [Vigor x Vigor]'
   skillTarget: 0
   skillSpeed: 25
   extraEffect: 0

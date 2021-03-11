@@ -28,7 +28,7 @@ MonoBehaviour:
     target: 0
   skillElement: 7
   _manaCost: 1
-  info: Your deadly eyes reduces your opponent Attack and Defense by 3
+  info: Your deadly eyes reduces your opponent Attack and Defense by 3.
   skillTarget: 0
   skillSpeed: 0
   extraEffect: 0
