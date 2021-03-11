@@ -9,7 +9,7 @@ using UnityEngine;
 public class MonsterSO : ScriptableObject {
 
     public int baseHp, baseMana;
-    public float baseAttack, baseDefense, baseSpcAttack, baseSpcDefense, baseSpeed;
+    public float baseVigor = 10, baseWisdom = 10, baseFocus = 10, baseSpcDefense, baseAgility = 10;
     public Skill[] baseSkills;
 
     public string monsterName;

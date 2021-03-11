@@ -128,7 +128,7 @@ public class Battlefield : MonoBehaviour
                 m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.skill.skillSpeed;
             }
             else {
-                m.atb += m.gameMonster.actualSpeed * Time.deltaTime * BattleController.ATBBARSPEED;
+                m.atb += m.gameMonster.actualAgility * Time.deltaTime * BattleController.ATBBARSPEED;
             }
         }
 
@@ -137,7 +137,7 @@ public class Battlefield : MonoBehaviour
                 m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.skill.skillSpeed;
             }
             else {
-                m.atb += m.gameMonster.actualSpeed * Time.deltaTime * BattleController.ATBBARSPEED;
+                m.atb += m.gameMonster.actualAgility * Time.deltaTime * BattleController.ATBBARSPEED;
             }
         }
     }

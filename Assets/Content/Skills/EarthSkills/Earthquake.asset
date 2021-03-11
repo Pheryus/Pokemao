@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a331bbc92130e1a41a23ac37adce3e00, type: 3}
-  m_Name: WaterGun
+  m_Name: Earthquake
   m_EditorClassIdentifier: 
   dmgSkills:
-  - baseDmg: 12
+  - baseDmg: 18
     acc: 100
   onHitACC: 100
-  skillName: Water Gun
+  skillName: Earthquake
   isSpecial: 1
   onHitEffects: []
   onCastEffects: []
-  skillElement: 2
-  manaCost: 0
-  info: Powerful blast of water.
-  skillTarget: 0
+  skillElement: 4
+  _manaCost: 0
+  info: Channel to shake the ground, damaging EVERYONE.
+  skillTarget: 5
+  skillSpeed: 20
   extraEffect: 0
+  attackStatus: 2
+  defenseStatus: 0

@@ -8,7 +8,7 @@ public enum ExtraEffect { none, sufferHalfDamage, sufferFiveDamage, ignoreArmor}
 [System.Serializable]
 public class Effect
 {
-    public enum EffectType { regenerate, burn, poison, block, magicBlock, statusBuff, statusDebuff, protection, piercing, blind, removeBurn, removePoison, activateNextTurn, skipNextTurn, loseWhenTakeDamage, burnOnContact, attackBuff, spcAttackBuff, defenseBuff, spcDefenseBuff, speedBuff};
+    public enum EffectType { regenerate, burn, poison, block, magicBlock, statusBuff, statusDebuff, protection, piercing, blind, removeBurn, removePoison, activateNextTurn, skipNextTurn, loseWhenTakeDamage, burnOnContact, vigorBuff, focusBuff, wisdomBuff, spcDefenseBuff, agilityBuff, attackDebuff, defenseDebuff, spcAttackDebuff, spcDefenseDebuff, speedDebuff, cancelChannel};
     public EffectType effectType;
     public int intensity;
     
@@ -55,7 +55,6 @@ public class Skill : ScriptableObject {
     public float onHitACC = 100;
     public string skillName;
     public bool isSpecial;
-
     
     [SerializeField]
     public List<Effect> onHitEffects;
@@ -87,6 +86,12 @@ public class Skill : ScriptableObject {
 
     public ExtraEffect extraEffect;
 
+    public enum StatusType { vigor, agility, wisdom, focus };
+
+    public StatusType attackStatus;
+
+    public StatusType defenseStatus;
+
     public bool TargetNeedInput {
         get {
             return skillTarget == TargetEnum.targetEnemy || skillTarget == TargetEnum.ally;
@@ -104,14 +109,43 @@ public class Skill : ScriptableObject {
         }
     }
 
+
+    public static float GetStatusValue(StatusType statusType, GameMonster monster) {
+        float status = 0;
+
+        switch (statusType) {
+            case StatusType.vigor:
+                status = monster.actualVigor + monster.BonusVigor;
+                break;
+            case StatusType.agility:
+                status = monster.actualAgility + monster.BonusAgility;
+                break;
+            case StatusType.focus:
+                status = monster.actualFocus + monster.BonusFocus;
+                break;
+            case StatusType.wisdom:
+                status = monster.actualWisdom + monster.BonusWisdom;
+                break;
+        }
+        return Mathf.Max(1, status);
+    }
+
     public static float Damage (Skill skill, DmgSkill dmgSkill, GameMonster caster, GameMonster target) {
         float dmg = dmgSkill.baseDmg;
+
+        float attackStatus = GetStatusValue(skill.attackStatus, caster);
+        float defenseStatus = GetStatusValue(skill.defenseStatus, target);
+
+        dmg *= attackStatus / defenseStatus;
+
+        /*
         if (skill.isSpecial) {
-            dmg *= ((caster.actualSpcAttack + caster.BonusSpcAttack) / (target.actualSpcDefense + target.BonusSpcDefense));
+            dmg *= ((caster.actualFocus + caster.BonusFocus) / (target.actualSpcDefense + target.BonusSpcDefense));
         }
         else {
-            dmg *= ((caster.actualAttack + caster.BonusAttack) / (target.actualDefense + target.BonusDefense));
+            dmg *= ((caster.actualVigor + caster.BonusVigor) / (target.actualWisdom + target.BonusWisdom));
         }
+        */
 
         if (skill.skillElement == caster.monsterElement) {
             dmg *= 1.25f;
@@ -130,8 +164,6 @@ public class Skill : ScriptableObject {
         else if (skill.extraEffect != ExtraEffect.ignoreArmor) {
             dmg -= target.Armor;
         }
-        
-
         
         target.TakeHit(skill.isSpecial, caster);
         dmg = Mathf.Max(dmg, 0);

@@ -31,7 +31,7 @@ public class GameMonster : MonsterSO
         }
     }
 
-    public float actualAttack, actualDefense, actualSpcAttack, actualSpcDefense, actualSpeed, actualDodge, actualACC;
+    public float actualVigor, actualWisdom, actualFocus, actualSpcDefense, actualAgility, actualDodge, actualACC;
 
     int _actualHp;
 
@@ -80,9 +80,9 @@ public class GameMonster : MonsterSO
         }
     }
 
-    public int BonusAttack {
+    public int BonusVigor {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.attackBuff);
+            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.vigorBuff);
             int value = 0;
 
             if (ef != null) {
@@ -97,16 +97,16 @@ public class GameMonster : MonsterSO
         }    
     }
 
-    public int BonusDefense {
+    public int BonusWisdom {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.defenseBuff);
+            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.wisdomBuff);
             return ef != null ? ef.intensity : 0;
         }
     }
 
-    public int BonusSpcAttack {
+    public int BonusFocus {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.spcAttackBuff);
+            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.focusBuff);
             return ef != null ? ef.intensity : 0;
         }
     }
@@ -118,9 +118,9 @@ public class GameMonster : MonsterSO
         }
     }
 
-    public int BonusSpeed {
+    public int BonusAgility {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.speedBuff);
+            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.agilityBuff);
             return ef != null ? ef.intensity : 0;
         }
     }
@@ -179,16 +179,16 @@ public class GameMonster : MonsterSO
         actualMana += amount;
     }
 
-    public GameMonster(int baseHp, float baseAttack, float baseDefense, float baseSpcAttack, float baseSpcDefense, float baseSpeed, Skill[] skills, string monsterName, Sprite sprite, float baseACC, float baseDodge, Element ele, int baseMana, MonsterPassive passive) {
-        actualHp = this.baseHp = baseHp * 5 + 20;
-        actualAttack = this.baseAttack = baseAttack;
-        actualDefense = this.baseDefense = baseDefense;
-        actualSpcAttack = this.baseSpcAttack = baseSpcAttack;
+    public GameMonster(int baseHp, float baseVigor, float baseWisdom, float baseFocus, float baseSpcDefense, float baseAgility, Skill[] skills, string monsterName, Sprite sprite, float baseACC, float baseDodge, Element ele, int baseMana, MonsterPassive passive) {
+        
+        actualVigor = this.baseVigor = baseVigor;
+        actualWisdom = this.baseWisdom = baseWisdom;
+        actualFocus = this.baseFocus = baseFocus;
         actualSpcDefense = this.baseSpcDefense = baseSpcDefense;
         actualDodge = this.baseDodge = baseDodge;
         actualACC = this.baseBonusACC = baseACC;
 
-        actualSpeed = this.baseSpeed = baseSpeed;
+        actualAgility = this.baseAgility = baseAgility;
         this.baseSkills = new Skill[skills.Length];
         
         for (int i = 0; i < skills.Length; i++) {
@@ -199,18 +199,19 @@ public class GameMonster : MonsterSO
         this.sprite = sprite;
         actualEffects = new List<Effect>();
         monsterElement = ele;
-        actualMana = this.baseMana = baseMana * 2 + 5;
+        actualHp = this.baseHp = (int) (baseHp + baseVigor * 2 + baseAgility);
+        actualMana = this.baseMana = (int)(baseMana + baseWisdom + baseFocus / 2);
         this.passive = passive;
     }
 
     public GameMonster (GameMonster monster) {
         baseHp = monster.baseHp;
         actualHp = monster.actualHp;
-        actualAttack = baseAttack = monster.actualAttack;
-        actualDefense = baseDefense = monster.actualDefense;
-        actualSpcAttack = baseSpcAttack = monster.actualSpcAttack;
+        actualVigor = baseVigor = monster.actualVigor;
+        actualWisdom = baseWisdom = monster.actualWisdom;
+        actualFocus = baseFocus = monster.actualFocus;
         actualSpcDefense = baseSpcDefense =  monster.actualSpcDefense;
-        actualSpeed = baseSpeed = monster.baseSpeed;
+        actualAgility = baseAgility = monster.baseAgility;
         baseSkills = monster.baseSkills;
         monsterName = monster.monsterName;
         sprite = monster.sprite;
@@ -220,25 +221,25 @@ public class GameMonster : MonsterSO
         actualMana = baseMana = monster.baseMana;
     }
 
-    public GameMonster(MonsterSO monsterSO) : this(monsterSO.baseHp, monsterSO.baseAttack,
-        monsterSO.baseDefense, monsterSO.baseSpcAttack, monsterSO.baseSpcDefense, monsterSO.baseSpeed, monsterSO.baseSkills, monsterSO.monsterName, monsterSO.sprite, monsterSO.baseDodge, monsterSO.baseBonusACC, monsterSO.monsterElement, monsterSO.baseMana, monsterSO.passive) { }
+    public GameMonster(MonsterSO monsterSO) : this(monsterSO.baseHp, monsterSO.baseVigor,
+        monsterSO.baseWisdom, monsterSO.baseFocus, monsterSO.baseSpcDefense, monsterSO.baseAgility, monsterSO.baseSkills, monsterSO.monsterName, monsterSO.sprite, monsterSO.baseDodge, monsterSO.baseBonusACC, monsterSO.monsterElement, monsterSO.baseMana, monsterSO.passive) { }
 
     public void UpgradeStatus(MonsterStat statToGain, int amount) {
         switch (statToGain) {
-            case MonsterStat.atk:
-                actualAttack += amount;
+            case MonsterStat.vigor:
+                actualVigor += amount;
                 break;
-            case MonsterStat.def:
-                actualDefense += amount;
+            case MonsterStat.wisdom:
+                actualWisdom += amount;
                 break;
-            case MonsterStat.spcAtk:
-                actualSpcAttack += amount;
+            case MonsterStat.focus:
+                actualFocus += amount;
                 break;
             case MonsterStat.spcDef:
                 actualSpcDefense += amount;
                 break;
             case MonsterStat.speed:
-                actualSpcDefense += amount;
+                actualAgility += amount;
                 break;
             case MonsterStat.maxHP:
                 actualHp += amount;

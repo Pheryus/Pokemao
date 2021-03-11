@@ -10,18 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a331bbc92130e1a41a23ac37adce3e00, type: 3}
-  m_Name: WaterGun
+  m_Name: Deadly Eyes
   m_EditorClassIdentifier: 
-  dmgSkills:
-  - baseDmg: 12
-    acc: 100
+  dmgSkills: []
   onHitACC: 100
-  skillName: Water Gun
+  skillName: Scream
   isSpecial: 1
   onHitEffects: []
-  onCastEffects: []
-  skillElement: 2
-  manaCost: 0
-  info: Powerful blast of water.
+  onCastEffects:
+  - effectType: 21
+    intensity: 3
+    onCastACC: 100
+    target: 0
+  - effectType: 22
+    intensity: 3
+    onCastACC: 100
+    target: 0
+  skillElement: 7
+  _manaCost: 1
+  info: Your deadly eyes reduces your opponent Attack and Defense by 3
   skillTarget: 0
+  skillSpeed: 0
   extraEffect: 0
+  attackStatus: 3
+  defenseStatus: 0

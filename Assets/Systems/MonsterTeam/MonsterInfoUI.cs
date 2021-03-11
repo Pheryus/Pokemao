@@ -80,11 +80,11 @@ public class MonsterInfoUI : GameInput {
     void UpdateMonsterStats() {
         hpStat.text = "Hp: " + gameMonster.actualHp.ToString() + "/" + gameMonster.baseHp.ToString() ;
         manaStat.text = "Mp: " + gameMonster.actualMana.ToString() + "/" + gameMonster.baseMana.ToString();
-        attackStat.text = "Attack: " + gameMonster.actualAttack.ToString();
-        defenseStat.text = "Defense: " + gameMonster.actualDefense.ToString();
-        spcAttackStat.text = "Spc. Attack: " + gameMonster.actualSpcAttack.ToString();
-        spcDefenseStat.text = "Spc. Defense: " + gameMonster.actualSpcDefense.ToString();
-        speedStat.text = "Speed: " + gameMonster.actualSpeed.ToString();
+        attackStat.text = "Vigor: " + gameMonster.baseVigor.ToString();
+        defenseStat.text = "Wisdom: " + gameMonster.baseWisdom.ToString();
+        spcAttackStat.text = "Focus: " + gameMonster.baseFocus.ToString();
+        //spcDefenseStat.text = "Spc. Defense: " + gameMonster.actualSpcDefense.ToString();
+        speedStat.text = "Agility: " + gameMonster.baseAgility.ToString();
         monsterName.text = gameMonster.monsterName;
         monsterSprite.sprite = gameMonster.sprite;
         

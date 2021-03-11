@@ -229,15 +229,15 @@ public class BattleController : MonoBehaviour {
         runningATP = false;
         GameMonster playerMonsterSO = activePlayerMonster.gameMonster;
         ActiveMonster target = activePlayerMonster.skillTarget;
-
+        Debug.Log("mana: " + playerMonsterSO.actualMana);
         playerMonsterSO.actualMana -= activePlayerMonster.skill.manaCost;
         yield return enemiesUI.StartCoroutine(enemiesUI.UpdateMonsterBar(hpBar: false, activePlayerMonster, playerMonsterSO.pctMana));
         
         yield return StartCoroutine(UseSkill(activePlayerMonster.skill, caster: activePlayerMonster, target: target));
         yield return new WaitForSeconds(1f);
         yield return StartCoroutine(EndOfTurnEffects(activePlayerMonster));
-        activePlayerMonster.ResetSkill();
         activePlayerMonster.atb = 0;
+        activePlayerMonster.ResetSkill();
         runningATP = true;
     }
 
@@ -294,7 +294,9 @@ public class BattleController : MonoBehaviour {
                 }
             }
             else if (m.atb >= ATBMIN) {
+                activePlayerMonster = m;
                 StartCoroutine(PlayerSkill());
+                return;
             }
         }
         foreach (ActiveMonster m in battlefield.enemyActiveMonsters) {

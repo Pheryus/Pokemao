@@ -2539,7 +2539,7 @@ GameObject:
   - component: {fileID: 383139912}
   - component: {fileID: 383139911}
   m_Layer: 0
-  m_Name: Defense
+  m_Name: Agility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2583,7 +2583,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Defense:'
+  m_text: 'Agility:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4057,7 +4057,7 @@ GameObject:
   - component: {fileID: 690313482}
   - component: {fileID: 690313481}
   m_Layer: 0
-  m_Name: SpcAttack
+  m_Name: Wisdom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4101,7 +4101,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Spc. Attack:'
+  m_text: 'Wisdom:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8021,7 +8021,7 @@ GameObject:
   - component: {fileID: 1265044024}
   - component: {fileID: 1265044023}
   m_Layer: 0
-  m_Name: SpcDefense
+  m_Name: Speed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8065,7 +8065,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Spc. Defense:'
+  m_text: 'Focus:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8483,7 +8483,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1372801388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9026,7 +9026,7 @@ GameObject:
   - component: {fileID: 1493226372}
   - component: {fileID: 1493226371}
   m_Layer: 0
-  m_Name: Attack
+  m_Name: Vigor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9070,7 +9070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Attack:'
+  m_text: 'Vigor:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -12214,7 +12214,7 @@ MonoBehaviour:
   defenseStat: {fileID: 383139911}
   spcAttackStat: {fileID: 690313481}
   spcDefenseStat: {fileID: 1265044023}
-  speedStat: {fileID: 1372801389}
+  speedStat: {fileID: 1265044023}
   monsterName: {fileID: 763002287}
   elementName: {fileID: 144488580}
   castSpeed: {fileID: 720483362}

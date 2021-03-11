@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHp: 12
   baseMana: 12
-  baseAttack: 50
-  baseDefense: 12
-  baseSpcAttack: 50
+  baseVigor: 10
+  baseWisdom: 10
+  baseFocus: 10
   baseSpcDefense: 7
-  baseSpeed: 15
+  baseAgility: 10
   baseSkills:
   - {fileID: 11400000, guid: 964062b3bb8a8b141aad19cc89b2ff15, type: 2}
   - {fileID: 11400000, guid: 1b4f0f9febef50947bc221137fd75b75, type: 2}

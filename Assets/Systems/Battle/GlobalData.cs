@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterStat { atk, def, spcAtk, spcDef, speed, maxHP, maxMana };
+public enum MonsterStat { vigor, wisdom, focus, spcDef, speed, maxHP, maxMana };
 
 public class GlobalData : MonoBehaviour
 {
@@ -68,11 +68,11 @@ public class GlobalData : MonoBehaviour
     }
     public string GetStatString (MonsterStat stat) {
         switch (stat) {
-            case MonsterStat.atk:
+            case MonsterStat.vigor:
                 return "Attack";
-            case MonsterStat.def:
+            case MonsterStat.wisdom:
                 return "Defense";
-            case MonsterStat.spcAtk:
+            case MonsterStat.focus:
                 return "Special Attack";
             case MonsterStat.spcDef:
                 return "Special Defense";

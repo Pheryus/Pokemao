@@ -6,8 +6,8 @@ using UnityEngine;
 public static class BattleGlobal  {
 
     public static bool PlayerActsFirst (GameMonster player, GameMonster enemy) {
-        float v = player.actualSpeed + enemy.actualSpeed;
-        return UnityEngine.Random.Range(0, v) < player.actualSpeed;
+        float v = player.actualAgility + enemy.actualAgility;
+        return UnityEngine.Random.Range(0, v) < player.actualAgility;
     }
 
     public static Skill EnemySelectSkill (GameMonster enemy) {
