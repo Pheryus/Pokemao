@@ -8,13 +8,21 @@ public enum ExtraEffect { none, sufferHalfDamage, sufferFiveDamage, ignoreArmor}
 [System.Serializable]
 public class Effect
 {
-    public enum EffectType { regenerate, burn, poison, block, magicBlock, protection, piercing, blind, removeBurn, removePoison, activateNextTurn, skipNextTurn, loseWhenTakeDamage, burnOnContact, vigorBuff, focusBuff, wisdomBuff, spcDefenseBuff, agilityBuff, attackDebuff, defenseDebuff, spcAttackDebuff, spcDefenseDebuff, agilityDebuff, cancelChannel, channelSpeedBuff, channelSpeedDebuff, slow, haste};
+    public enum EffectType { regenerate = 0, burn = 1, poison = 2, block = 3, resistance = 4, protection = 5, piercing = 6,
+        blind = 7, removeBurn = 8, removePoison = 9, activateNextTurn = 10, skipNextTurn = 11, loseWhenTakeDamage = 12,
+        burnOnContact = 13, vigorBuff = 14, focusBuff = 15, wisdomBuff = 16, agilityBuff = 18,
+        cancelChannel = 24, channelSpeed = 25, haste = 28};
+
     public EffectType effectType;
     public int intensity;
+
+    [HideInInspector]
+    public bool gainThisTurn;
     
-    public Effect  (Effect eff) {
+    public Effect  (Effect eff, bool gainThisTurn = false) {
         effectType = eff.effectType;
         intensity = eff.intensity;
+        this.gainThisTurn = gainThisTurn;
     }
 
     public Effect (EffectType type, int intensity) {
@@ -24,6 +32,11 @@ public class Effect
 
     public Effect () {
 
+    }
+
+    public static int IntensityFrom (List<Effect> effects, EffectType type) {
+        Effect ef = effects.Find(eff => eff.effectType == type);
+        return ef != null ? ef.intensity : 0;
     }
 }
 
@@ -158,13 +171,16 @@ public class Skill : ScriptableObject {
             dmg *= 0.66f;
         }
 
-        if (skill.isSpecial) {
-            dmg -= target.SpcArmor;
+
+        if (skill.extraEffect != ExtraEffect.ignoreArmor) {
+            if (skill.attackStatus == StatusType.wisdom || skill.attackStatus == StatusType.focus) {
+                dmg -= target.Resistance;
+            }
+            else if (skill.attackStatus == StatusType.vigor || skill.attackStatus == StatusType.agility) {
+                dmg -= target.Block;
+            }
         }
-        else if (skill.extraEffect != ExtraEffect.ignoreArmor) {
-            dmg -= target.Armor;
-        }
-        
+
         target.TakeHit(skill.isSpecial, caster);
         dmg = Mathf.Max(dmg, 0);
         return dmg;

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Defensive
   m_EditorClassIdentifier: 
   passive: 0
-  passiveName: Defensivo
-  description: "Sempre que recebe um ataque f\xEDsico, ganha +1 de Armadura."
+  passiveName: Defensive
+  description: When you suffer a physical damage, gain +1 Armor.

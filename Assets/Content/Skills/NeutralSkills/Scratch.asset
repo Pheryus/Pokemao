@@ -24,5 +24,7 @@ MonoBehaviour:
   _manaCost: 0
   info: Deal 10 base damage to a single target.
   skillTarget: 0
-  skillSpeed: 10
+  skillSpeed: 30
   extraEffect: 0
+  attackStatus: 0
+  defenseStatus: 0

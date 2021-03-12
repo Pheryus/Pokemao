@@ -18,17 +18,17 @@ MonoBehaviour:
   isSpecial: 1
   onHitEffects: []
   onCastEffects:
-  - effectType: 21
-    intensity: 3
+  - effectType: 14
+    intensity: -3
     onCastACC: 100
     target: 0
-  - effectType: 22
-    intensity: 3
+  - effectType: 16
+    intensity: -3
     onCastACC: 100
     target: 0
   skillElement: 7
   _manaCost: 1
-  info: Your deadly eyes reduces your opponent Attack and Defense by 3.
+  info: Your deadly eyes reduces your opponent Wisdom and Vigor by 3.
   skillTarget: 0
   skillSpeed: 0
   extraEffect: 0

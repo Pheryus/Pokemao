@@ -36,20 +36,20 @@ MonoBehaviour:
     max: 3
   layers:
     array:
-    - nodeType: 15
+    - nodeType: 9
       distanceFromPreviousLayer:
         min: 2
         max: 3
       nodesApartDistance: 2
       randomizePosition: 0
       randomizeNodes: 0
-    - nodeType: 7
+    - nodeType: 2
       distanceFromPreviousLayer:
         min: 2
         max: 3
       nodesApartDistance: 2
-      randomizePosition: 0.587
-      randomizeNodes: 1
+      randomizePosition: 0.588
+      randomizeNodes: 0
     - nodeType: 12
       distanceFromPreviousLayer:
         min: 2

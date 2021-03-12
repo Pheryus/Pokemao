@@ -125,19 +125,19 @@ public class Battlefield : MonoBehaviour
     public void UpdateATBBar() {
         foreach (ActiveMonster m in playerActiveMonsters) {
             if (m.skill) {
-                m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.skill.skillSpeed;
+                m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.skill.skillSpeed * m.gameMonster.CastSpeed;
             }
             else {
-                m.atb += m.gameMonster.actualAgility * Time.deltaTime * BattleController.ATBBARSPEED;
+                m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.gameMonster.ActionSpeed;
             }
         }
 
         foreach (ActiveMonster m in enemyActiveMonsters) {
             if (m.skill) {
-                m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.skill.skillSpeed;
+                m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.skill.skillSpeed * m.gameMonster.CastSpeed;
             }
             else {
-                m.atb += m.gameMonster.actualAgility * Time.deltaTime * BattleController.ATBBARSPEED;
+                m.atb += Time.deltaTime * BattleController.ATBBARSPEED * m.gameMonster.ActionSpeed;
             }
         }
     }

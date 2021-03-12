@@ -19,7 +19,7 @@ MonoBehaviour:
   skillName: Scream
   isSpecial: 1
   onHitEffects:
-  - effectType: 26
+  - effectType: 24
     intensity: 0
   onCastEffects: []
   skillElement: 7

@@ -18,12 +18,12 @@ MonoBehaviour:
   isSpecial: 1
   onHitEffects: []
   onCastEffects:
-  - effectType: 27
-    intensity: 25
+  - effectType: 28
+    intensity: -25
     onCastACC: 100
     target: 3
-  - effectType: 26
-    intensity: 25
+  - effectType: 25
+    intensity: 50
     onCastACC: 100
     target: 3
   skillElement: 7

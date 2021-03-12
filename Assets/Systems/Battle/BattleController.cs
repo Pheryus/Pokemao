@@ -248,7 +248,7 @@ public class BattleController : MonoBehaviour {
         }
 
         for (int i = monster.gameMonster.actualEffects.Count - 1; i >= 0; i--) {
-            if (monster.gameMonster.actualEffects[i].intensity <= 0) {
+            if (monster.gameMonster.actualEffects[i].intensity == 0) {
                 monster.gameMonster.actualEffects.RemoveAt(i);
             }
         }

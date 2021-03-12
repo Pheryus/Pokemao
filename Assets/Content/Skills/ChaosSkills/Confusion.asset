@@ -19,8 +19,8 @@ MonoBehaviour:
   skillName: Scream
   isSpecial: 1
   onHitEffects:
-  - effectType: 26
-    intensity: 0
+  - effectType: 25
+    intensity: -25
   onCastEffects: []
   skillElement: 7
   _manaCost: 4

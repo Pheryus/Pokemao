@@ -31,6 +31,20 @@ public class GameMonster : MonsterSO
         }
     }
 
+    public float CastSpeed {
+        get {
+            float castMultiplier = 100 + Effect.IntensityFrom(actualEffects, Effect.EffectType.channelSpeed);
+            return (TotalFocus / 10) * (castMultiplier / 100);
+        }
+    }
+
+    public float ActionSpeed {
+        get {
+            float actionSpeedMultiplier = 100 + Effect.IntensityFrom(actualEffects, Effect.EffectType.haste);
+            return TotalAgility * actionSpeedMultiplier / 100;
+        }
+    }
+
     public float actualVigor, actualWisdom, actualFocus, actualSpcDefense, actualAgility, actualDodge, actualACC;
 
     int _actualHp;
@@ -48,6 +62,18 @@ public class GameMonster : MonsterSO
             if (_actualHp > baseHp) {
                 _actualHp = baseHp;
             }
+        }
+    }
+
+    public float TotalAgility {
+        get {
+            return actualAgility + BonusAgility;
+        }
+    }
+
+    public float TotalFocus {
+        get {
+            return actualFocus + BonusFocus;
         }
     }
 
@@ -69,70 +95,49 @@ public class GameMonster : MonsterSO
 
     int _actualMana;
 
-    public int Armor {
+    public int Block {
         get {
-            foreach (Effect effect in actualEffects) {
-                if (effect.effectType == Effect.EffectType.block) {
-                    return effect.intensity;
-                }
-            }
-            return 0;
+            return Effect.IntensityFrom(actualEffects, Effect.EffectType.block);
         }
     }
 
     public int BonusVigor {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.vigorBuff);
-            int value = 0;
-
-            if (ef != null) {
-                value = ef.intensity;
-                ef.intensity--;
-                if (ef.intensity == 0) {
-                    actualEffects.Remove(ef);
-                    BattleAction.monsterEffectUpdate?.Invoke();
-                }
-            }
-            return value;
+            return Effect.IntensityFrom(actualEffects, Effect.EffectType.vigorBuff);
         }    
+    }
+
+    int EffectIntensity(Effect effect) {
+        int value = effect.intensity;
+        effect.intensity--;
+        if (effect.intensity == 0) {
+            actualEffects.Remove(effect);
+            BattleAction.monsterEffectUpdate?.Invoke();
+        }
+        return value;
     }
 
     public int BonusWisdom {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.wisdomBuff);
-            return ef != null ? ef.intensity : 0;
+            return Effect.IntensityFrom(actualEffects, Effect.EffectType.wisdomBuff);
         }
     }
 
     public int BonusFocus {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.focusBuff);
-            return ef != null ? ef.intensity : 0;
-        }
-    }
-
-    public int BonusSpcDefense {
-        get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.spcDefenseBuff);
-            return ef != null ? ef.intensity : 0;
+            return Effect.IntensityFrom(actualEffects, Effect.EffectType.focusBuff);
         }
     }
 
     public int BonusAgility {
         get {
-            Effect ef = actualEffects.Find(eff => eff.effectType == Effect.EffectType.agilityBuff);
-            return ef != null ? ef.intensity : 0;
+            return Effect.IntensityFrom(actualEffects, Effect.EffectType.agilityBuff);
         }
     }
 
-    public int SpcArmor {
+    public int Resistance {
         get {
-            foreach (Effect effect in actualEffects) {
-                if (effect.effectType == Effect.EffectType.magicBlock) {
-                    return effect.intensity;
-                }
-            }
-            return 0;
+            return Effect.IntensityFrom(actualEffects, Effect.EffectType.resistance);
         }
     }
 
@@ -145,7 +150,7 @@ public class GameMonster : MonsterSO
 
     public void TakeHit(bool isSpc, GameMonster attacker) {
         foreach (Effect effect in actualEffects) {
-            if (isSpc && effect.effectType == Effect.EffectType.magicBlock || (!isSpc && effect.effectType == Effect.EffectType.block)) {
+            if (isSpc && effect.effectType == Effect.EffectType.resistance || (!isSpc && effect.effectType == Effect.EffectType.block)) {
                 effect.intensity--;
             }
             if (effect.effectType == Effect.EffectType.burnOnContact && !isSpc) {
@@ -158,7 +163,7 @@ public class GameMonster : MonsterSO
 
     public List<Effect> actualEffects;
 
-    public void AddEffect (Effect effect) {
+    public void AddEffect (Effect effect, bool gainThisTurn = false) {
         Debug.Log(monsterName + " ganhou " + effect.effectType);
         foreach (Effect actualEffect in actualEffects) {
             if (actualEffect.effectType == effect.effectType) {
@@ -168,7 +173,9 @@ public class GameMonster : MonsterSO
                 return;
             }
         }
-        actualEffects.Add(new Effect(effect));
+
+        actualEffects.Add(new Effect(effect, gainThisTurn));
+
     }
 
     public void RestoreHp(int amount) {

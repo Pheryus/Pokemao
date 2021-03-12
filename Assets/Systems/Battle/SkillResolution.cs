@@ -134,7 +134,7 @@ public class SkillResolution : MonoBehaviour {
 
                 case Skill.TargetEnum.ally:
                     targets.Add(skillCast.target);
-                    continue;
+                    break;
                 case Skill.TargetEnum.targetEnemy:
                     targets.Add(skillCast.target);
                     break;
@@ -145,7 +145,7 @@ public class SkillResolution : MonoBehaviour {
             }
 
             foreach (ActiveMonster target in targets) {
-                target.gameMonster.AddEffect(effect);
+                target.gameMonster.AddEffect(effect, gainThisTurn: skillCast.caster.GetHashCode() == target.GetHashCode());
                 battleMsg.GainEffectMessage(target.gameMonster.monsterName, GlobalData.i.GetEffectString(effect.effectType));
                 while (battleMsg.state != BattleMsg.State.none) {
                     yield return null;

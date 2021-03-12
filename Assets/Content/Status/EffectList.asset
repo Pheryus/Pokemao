@@ -24,16 +24,36 @@ MonoBehaviour:
   - effect: 3
     effectName: Block
     info: 
-    image: {fileID: 21300000, guid: 35a1fd49ee50aec40b335838fbd3e7e4, type: 3}
-  - effect: 15
+    image: {fileID: 21300000, guid: d44ec914768618943937cd8a3d646008, type: 3}
+  - effect: 13
     effectName: Burn on Contact
     info: 
     image: {fileID: 21300000, guid: caa42686312433f4991f41c9f95f59eb, type: 3}
-  - effect: 9
+  - effect: 7
     effectName: Bind
     info: Reduce ACC in 10%.
     image: {fileID: 21300000, guid: 1be847765a917b64991443b0a689c504, type: 3}
-  - effect: 16
-    effectName: AttackBuff
+  - effect: 14
+    effectName: Vigor Buff
     info: 
-    image: {fileID: 21300000, guid: 99e31eaf818cd864186a27e1c3fbdb62, type: 3}
+    image: {fileID: 21300000, guid: 8b6fa162072f54e49bd672426b4bc5c3, type: 3}
+  - effect: 15
+    effectName: Focus Buff
+    info: 
+    image: {fileID: 21300000, guid: 1ba02e7351c614e4aa477aa0abea5080, type: 3}
+  - effect: 16
+    effectName: Wisdom Buff
+    info: 
+    image: {fileID: 21300000, guid: 1b0925a839ffc174d9206abc90f54bc6, type: 3}
+  - effect: 18
+    effectName: Agility Buff
+    info: 
+    image: {fileID: 21300000, guid: f5b19e16387cc984e82b302c6803306c, type: 3}
+  - effect: 28
+    effectName: Haste
+    info: 
+    image: {fileID: 21300000, guid: f5b19e16387cc984e82b302c6803306c, type: 3}
+  - effect: 25
+    effectName: Haste
+    info: 
+    image: {fileID: 21300000, guid: f5b19e16387cc984e82b302c6803306c, type: 3}

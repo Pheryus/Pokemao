@@ -20,8 +20,8 @@ MonoBehaviour:
   baseSpcDefense: 7
   baseAgility: 10
   baseSkills:
-  - {fileID: 11400000, guid: 964062b3bb8a8b141aad19cc89b2ff15, type: 2}
-  - {fileID: 11400000, guid: 1b4f0f9febef50947bc221137fd75b75, type: 2}
+  - {fileID: 11400000, guid: 34b886359a17c764fbbf2981e5dd74c7, type: 2}
+  - {fileID: 11400000, guid: 614a8607d3334914793109a7234d3794, type: 2}
   - {fileID: 11400000, guid: d8da07fc39a458e4f82a48eeff03c606, type: 2}
   - {fileID: 11400000, guid: 091247d010bb5464ca728650b2455559, type: 2}
   monsterName: Charmander

@@ -107,10 +107,12 @@ public class GlobalData : MonoBehaviour
                 return " is blinded";
             case Effect.EffectType.block:
                 return " now blocks physical attacks";
-            case Effect.EffectType.magicBlock:
+            case Effect.EffectType.resistance:
                 return " now blocks special attacks";
             case Effect.EffectType.burnOnContact:
                 return "'s skin is burning a lot!";
+            case Effect.EffectType.channelSpeed:
+                return " is now channeling faster!";
         }
         return "";
     }
