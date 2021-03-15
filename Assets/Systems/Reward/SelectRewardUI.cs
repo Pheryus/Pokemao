@@ -17,7 +17,7 @@ public class RewardModalUI {
     public MonsterStat monsterStat;
 
     public void UpdateRewardType(string name) {
-        if (rewardTypeNum == RewardControl.RewardTypeNum.restoreHP) {
+        if (rewardTypeNum == RewardControl.RewardTypeNum.restoreHP || rewardTypeNum == RewardControl.RewardTypeNum.restoreMana) {
             rewardName.text = rewardTypeSO.rewardName.Replace("@", name);
             rewardDescription.text = rewardTypeSO.info.Replace("@", name);
             rewardName.text = rewardName.text.Replace("$", name);
@@ -74,7 +74,7 @@ public class SelectRewardUI : GameInput {
                 gameObject.SetActive(false);
                 break;
             case RewardControl.RewardTypeNum.restoreMana:
-                //ayerResources.instance.mana += selectedRewardModal.amount;
+                selectedRewardModal.monsterTarget.actualMana += selectedRewardModal.amount;
                 BattleAction.gotReward?.Invoke();
                 break;
 
@@ -88,10 +88,8 @@ public class SelectRewardUI : GameInput {
                 changeTeamUI.SelectMonsterToGainStat(selectedRewardModal);
                 gameObject.SetActive(false);
                 break;
-
-            case RewardControl.RewardTypeNum.increaseMaxMana:
-                //PlayerResources.instance.maxMana += selectedRewardModal.amount;
-                //PlayerResources.instance.mana += selectedRewardModal.amount;
+            case RewardControl.RewardTypeNum.gainPokebola:
+                PlayerResources.instance.GainPokebola(selectedRewardModal.amount);
                 BattleAction.gotReward?.Invoke();
                 break;
         }

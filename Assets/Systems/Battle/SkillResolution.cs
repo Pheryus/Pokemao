@@ -22,6 +22,13 @@ public class SkillResolution : MonoBehaviour {
 
     public BattleMsg battleMsg;
 
+    public void CancelSkill(ActiveMonster target) {
+        if (target.skill != null) {
+            target.ResetSkill();
+            target.atb = BattleController.ATBMIN * 0.9f;
+        }
+    }
+
     public IEnumerator CastSkill (BattleSnapshot skillCast) {
 
         List<ActiveMonster> targets = new List<ActiveMonster>();
@@ -101,6 +108,9 @@ public class SkillResolution : MonoBehaviour {
                     foreach (Effect skillEffect in skillCast.skill.onHitEffects) {
 
                         target.gameMonster.AddEffect(skillEffect);
+                        if (skillEffect.effectType == Effect.EffectType.cancelChannel) {
+                            CancelSkill(target);
+                        }
 
                         if (!target.gameMonster.dead) {
                             battleMsg.GainEffectMessage(target.gameMonster.monsterName, GlobalData.i.GetEffectString(skillEffect.effectType));

@@ -8,19 +8,19 @@ public static class EffectResolution {
         EnemiesUI en = EnemiesUI.instance;
         switch (effect.effectType) {
             case Effect.EffectType.burn:
-                monster.gameMonster.actualHp -= effect.intensity;
+                monster.gameMonster.actualHp -= (int)effect.intensity;
                 en.StartCoroutine(en.UpdateMonsterBar(hpBar: true, monster, monster.gameMonster.pctHp));
                 effect.intensity--;
                 break;
 
             case Effect.EffectType.regenerate:
-                monster.gameMonster.actualHp += effect.intensity;
+                monster.gameMonster.actualHp += (int)effect.intensity;
                 en.StartCoroutine(en.UpdateMonsterBar(hpBar: true, monster, monster.gameMonster.pctHp));
                 effect.intensity--;
                 break;
 
             case Effect.EffectType.poison:
-                monster.gameMonster.actualHp -= effect.intensity;
+                monster.gameMonster.actualHp -= (int)effect.intensity;
                 en.StartCoroutine(en.UpdateMonsterBar(hpBar: true, monster, monster.gameMonster.pctHp));
                 effect.intensity--;
                 break;

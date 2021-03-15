@@ -33,21 +33,40 @@ public class GameMonster : MonsterSO
 
     public float CastSpeed {
         get {
-            float castMultiplier = 100 + Effect.IntensityFrom(actualEffects, Effect.EffectType.channelSpeed);
-            return (TotalFocus / 10) * (castMultiplier / 100);
+            float haste = 1 + Effect.IntensityFrom(actualEffects, Effect.EffectType.channelSpeed) / 100;
+            float slow = 1 + Effect.IntensityFrom(actualEffects, Effect.EffectType.channelSlow) / 100;
+            return ((TotalFocus / 10) * (haste / slow));
         }
     }
 
     public float ActionSpeed {
         get {
-            float actionSpeedMultiplier = 100 + Effect.IntensityFrom(actualEffects, Effect.EffectType.haste);
-            return TotalAgility * actionSpeedMultiplier / 100;
+            float haste = 1 + Effect.IntensityFrom(actualEffects, Effect.EffectType.haste) / 100;
+            float slow = 1 + Effect.IntensityFrom(actualEffects, Effect.EffectType.slow) / 100;
+            return ((TotalAgility) * (haste / slow));
         }
     }
 
     public float actualVigor, actualWisdom, actualFocus, actualSpcDefense, actualAgility, actualDodge, actualACC;
 
     int _actualHp;
+
+    public int monsterLevel;
+
+    public void LevelUpMonster (int levels) {
+        
+        for (int i = 0; i < levels; i++) {
+            int stat = UnityEngine.Random.Range(0, 4 + mainStats.Length);
+            MonsterStat statToUpgrade;
+            if (stat > 4) {
+                statToUpgrade = mainStats[stat - 4];
+            }
+            else {
+                statToUpgrade = (MonsterStat)stat;
+            }
+            UpgradeStatus(statToUpgrade, 1);
+        }
+    }
 
     public int actualHp {
         get {
@@ -97,18 +116,18 @@ public class GameMonster : MonsterSO
 
     public int Block {
         get {
-            return Effect.IntensityFrom(actualEffects, Effect.EffectType.block);
+            return (int) Effect.IntensityFrom(actualEffects, Effect.EffectType.block);
         }
     }
 
     public int BonusVigor {
         get {
-            return Effect.IntensityFrom(actualEffects, Effect.EffectType.vigorBuff);
+            return (int) Effect.IntensityFrom(actualEffects, Effect.EffectType.vigorBuff);
         }    
     }
 
-    int EffectIntensity(Effect effect) {
-        int value = effect.intensity;
+    float EffectIntensity(Effect effect) {
+        float value = effect.intensity;
         effect.intensity--;
         if (effect.intensity == 0) {
             actualEffects.Remove(effect);
@@ -119,25 +138,25 @@ public class GameMonster : MonsterSO
 
     public int BonusWisdom {
         get {
-            return Effect.IntensityFrom(actualEffects, Effect.EffectType.wisdomBuff);
+            return (int) Effect.IntensityFrom(actualEffects, Effect.EffectType.wisdomBuff);
         }
     }
 
     public int BonusFocus {
         get {
-            return Effect.IntensityFrom(actualEffects, Effect.EffectType.focusBuff);
+            return (int) Effect.IntensityFrom(actualEffects, Effect.EffectType.focusBuff);
         }
     }
 
     public int BonusAgility {
         get {
-            return Effect.IntensityFrom(actualEffects, Effect.EffectType.agilityBuff);
+            return (int) Effect.IntensityFrom(actualEffects, Effect.EffectType.agilityBuff);
         }
     }
 
     public int Resistance {
         get {
-            return Effect.IntensityFrom(actualEffects, Effect.EffectType.resistance);
+            return (int) Effect.IntensityFrom(actualEffects, Effect.EffectType.resistance);
         }
     }
 
@@ -165,17 +184,59 @@ public class GameMonster : MonsterSO
 
     public void AddEffect (Effect effect, bool gainThisTurn = false) {
         Debug.Log(monsterName + " ganhou " + effect.effectType);
+
+        if (effect.effectType == Effect.EffectType.cancelChannel) {
+            return;
+        }
+
         foreach (Effect actualEffect in actualEffects) {
             if (actualEffect.effectType == effect.effectType) {
                 actualEffect.intensity += effect.intensity;
-                Debug.Log("intensidade: " + effect.intensity);
-                BattleAction.monsterEffectUpdate?.Invoke();
                 return;
             }
         }
-
         actualEffects.Add(new Effect(effect, gainThisTurn));
 
+        if (effect.effectType == Effect.EffectType.haste || effect.effectType == Effect.EffectType.slow
+            || effect.effectType == Effect.EffectType.channelSpeed || effect.effectType == Effect.EffectType.channelSlow) {
+            ResolveConflictingEffects();
+        }
+        BattleAction.monsterEffectUpdate?.Invoke();
+    }
+
+    void ResolveConflictingEffects() {
+        Effect haste = actualEffects.Find(t => t.effectType == Effect.EffectType.haste);
+        Effect slow = actualEffects.Find(t => t.effectType == Effect.EffectType.slow);
+        Effect channelHaste = actualEffects.Find(t => t.effectType == Effect.EffectType.channelSpeed);
+        Effect channelSlow = actualEffects.Find(t => t.effectType == Effect.EffectType.channelSlow);
+        if (haste != null && slow != null) {
+            if (haste.intensity > slow.intensity) {
+                haste.intensity /= slow.intensity;
+                actualEffects.Remove(slow);
+            }
+            else if (haste.intensity < slow.intensity){
+                slow.intensity /= haste.intensity;
+                actualEffects.Remove(haste);
+            }
+            else {
+                actualEffects.Remove(haste);
+                actualEffects.Remove(slow);
+            }
+        }
+        if (channelHaste != null && channelSlow != null) {
+            if (channelHaste.intensity > channelSlow.intensity) {
+                channelHaste.intensity /= channelSlow.intensity;
+                actualEffects.Remove(channelSlow);
+            }
+            else if (channelHaste.intensity < channelSlow.intensity) {
+                channelSlow.intensity /= channelHaste.intensity;
+                actualEffects.Remove(channelHaste);
+            }
+            else {
+                actualEffects.Remove(channelHaste);
+                actualEffects.Remove(channelSlow);
+            }
+        }
     }
 
     public void RestoreHp(int amount) {
@@ -235,27 +296,22 @@ public class GameMonster : MonsterSO
         switch (statToGain) {
             case MonsterStat.vigor:
                 actualVigor += amount;
+                baseVigor += amount;
                 break;
             case MonsterStat.wisdom:
                 actualWisdom += amount;
+                baseWisdom += amount;
                 break;
             case MonsterStat.focus:
                 actualFocus += amount;
+                baseFocus += amount;
                 break;
-            case MonsterStat.spcDef:
-                actualSpcDefense += amount;
-                break;
-            case MonsterStat.speed:
+            case MonsterStat.agility:
                 actualAgility += amount;
-                break;
-            case MonsterStat.maxHP:
-                actualHp += amount;
-                baseHp += amount;
-                break;
-            case MonsterStat.maxMana:
-                actualMana += amount;
-                baseMana += amount;
+                baseAgility += amount;
                 break;
         }
+        monsterLevel ++;
+
     }
 }

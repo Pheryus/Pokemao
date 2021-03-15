@@ -14,7 +14,7 @@ public class RewardControl : MonoBehaviour {
 
     public MapInput mapInput;
 
-    public enum RewardTypeNum { newAbility, newPassive, powerupAbility, restoreHP, restoreMana, statsIncrease, increaseMaxMana };
+    public enum RewardTypeNum { newAbility, newPassive, powerupAbility, restoreHP, restoreMana, statsIncrease, gainPokebola };
     
     private void Start() {
         BattleAction.gotReward += CheckReward;
@@ -30,11 +30,26 @@ public class RewardControl : MonoBehaviour {
         selectRewardUI.ResetUI();
     }
 
+    RewardTypeNum RandomReward() {
+        RewardTypeNum result =  (RewardTypeNum)Random.Range(0, 7);
+        while (result == RewardTypeNum.newPassive || result == RewardTypeNum.powerupAbility) {
+            result = (RewardTypeNum)Random.Range(0, 7);
+        }
+        return result;
+    }
+
     void CheckReward() {
 
-        if (defeatedMonster.Count > 0) { 
-            CreateElementReward(RewardTypeNum.newAbility, 0);
-            CreateElementReward(RewardTypeNum.statsIncrease, 1);
+        if (defeatedMonster.Count > 0) {
+
+            RewardTypeNum firstChoice = RandomReward();
+            RewardTypeNum secondChoice = firstChoice;
+            while (secondChoice == firstChoice) {
+                secondChoice = RandomReward();
+            }
+
+            CreateElementReward(firstChoice, 0);
+            CreateElementReward(secondChoice, 1);
             defeatedMonster.RemoveAt(0);
             gameObject.SetActive(true);
             battleRewardGO.SetActive(true);
@@ -63,26 +78,27 @@ public class RewardControl : MonoBehaviour {
                 break;
 
             case RewardTypeNum.restoreMana:
-                rewardModalUI.amount = 5;
+                rewardModalUI.amount = 10;
+                rewardModalUI.monsterTarget = PlayerParty.instance.LowerMPMonster;
                 rewardModalUI.UpdateRewardType(rewardModalUI.amount.ToString());
                 break;
 
             case RewardTypeNum.restoreHP:
-                rewardModalUI.amount = 20;
+                rewardModalUI.amount = 25;
                 rewardModalUI.monsterTarget = PlayerParty.instance.LowerHPMonster;
 
                 rewardModalUI.UpdateRewardType(rewardModalUI.amount.ToString());
                 break;
 
+            case RewardTypeNum.gainPokebola:
+                rewardModalUI.amount = 1;
+                rewardModalUI.UpdateRewardType(rewardModalUI.amount.ToString());
+                break;
+
+
             case RewardTypeNum.statsIncrease:
                 rewardModalUI.amount = 1;
-                rewardModalUI.monsterStat = MonsterStat.maxMana;// GlobalData.i.GetRandomStat();
-                if (rewardModalUI.monsterStat == MonsterStat.maxHP) {
-                    rewardModalUI.amount = 5;
-                }
-                else if (rewardModalUI.monsterStat == MonsterStat.maxMana) {
-                    rewardModalUI.amount = 2;
-                }
+                rewardModalUI.monsterStat = GlobalData.i.GetRandomStat();
                 rewardModalUI.UpdateRewardType(GlobalData.i.GetStatString(rewardModalUI.monsterStat));
                 break;
 

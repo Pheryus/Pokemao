@@ -25,4 +25,6 @@ public class MonsterSO : ScriptableObject {
 
     public MonsterPassive passive;
 
+    public MonsterStat[] mainStats;
+
 }

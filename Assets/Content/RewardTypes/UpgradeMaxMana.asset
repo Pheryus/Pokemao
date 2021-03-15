@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a48b34150fb4ce48848e4a3a60007dc, type: 3}
   m_Name: UpgradeMaxMana
   m_EditorClassIdentifier: 
-  rewardName: 
-  info: Increase your max mana by @!
+  rewardName: Pokebola
+  info: Gain a pokebola!

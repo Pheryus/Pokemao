@@ -172,6 +172,7 @@ MonoBehaviour:
   restUI: {fileID: 2115301190}
   artefact: {fileID: 881809545}
   enemyLeader: {fileID: 311498485}
+  mapLevel: 0
 --- !u!4 &18539169
 Transform:
   m_ObjectHideFlags: 0
@@ -7647,6 +7648,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1223072505 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5498495208146967321, guid: c93c78063e9c1514f9b401cd56ade5f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 97639665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1224576211 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7706238486203116194, guid: c93c78063e9c1514f9b401cd56ade5f2,
@@ -8223,6 +8236,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338524392}
   m_CullTransparentMesh: 0
+--- !u!114 &1340686082 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7379532897466229595, guid: c93c78063e9c1514f9b401cd56ade5f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 97639665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1358727550
 GameObject:
   m_ObjectHideFlags: 0
@@ -9284,6 +9309,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1508853703}
   m_CullTransparentMesh: 0
+--- !u!114 &1509803890 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2795424943910440305, guid: c93c78063e9c1514f9b401cd56ade5f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 97639665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1520119509
 GameObject:
   m_ObjectHideFlags: 0
@@ -9518,6 +9555,7 @@ MonoBehaviour:
     statusPanel: {fileID: 97639668}
     hpText: {fileID: 932379717}
     manaText: {fileID: 1960322483}
+    levelText: {fileID: 2008097253}
   - hpBar: {fileID: 1397797123}
     atpBar: {fileID: 815228447}
     manaBar: {fileID: 1461774482}
@@ -9526,6 +9564,7 @@ MonoBehaviour:
     statusPanel: {fileID: 97639667}
     hpText: {fileID: 2060298880}
     manaText: {fileID: 16940321}
+    levelText: {fileID: 1509803890}
   playerMonstersUI:
   - hpBar: {fileID: 1244418957}
     atpBar: {fileID: 1657501919}
@@ -9535,6 +9574,7 @@ MonoBehaviour:
     statusPanel: {fileID: 97639670}
     hpText: {fileID: 560409888}
     manaText: {fileID: 1224576211}
+    levelText: {fileID: 1340686082}
   - hpBar: {fileID: 159638015}
     atpBar: {fileID: 114739522}
     manaBar: {fileID: 2017645334}
@@ -9543,6 +9583,7 @@ MonoBehaviour:
     statusPanel: {fileID: 97639669}
     hpText: {fileID: 722563508}
     manaText: {fileID: 2106063837}
+    levelText: {fileID: 1223072505}
   effectPrefab: {fileID: 890927278005828880, guid: 13a7677db39b6934e8b527bcd300353d,
     type: 3}
   yourMonstersIcon:
@@ -12008,7 +12049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPlayerMonsters:
-  - {fileID: 11400000, guid: dabcb6d5fd07cbe4f8ecc72adef2efc4, type: 2}
+  - {fileID: 11400000, guid: 2f901c5ac6eab2a4495356ca10dd6ce6, type: 2}
   - {fileID: 11400000, guid: e3166ae3ac150ae4f8138b37d88c1193, type: 2}
   - {fileID: 11400000, guid: dccfecf68abc9004f91a49ce301542b2, type: 2}
   playerParty: []
@@ -12225,6 +12266,18 @@ RectTransform:
   m_AnchoredPosition: {x: -5.44, y: 44.86}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2008097253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9032334198766342996, guid: c93c78063e9c1514f9b401cd56ade5f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 97639665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2017645334 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6739830952924164440, guid: c93c78063e9c1514f9b401cd56ade5f2,

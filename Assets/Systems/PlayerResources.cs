@@ -15,7 +15,6 @@ public class PlayerResources : MonoBehaviour {
 
     public List<Artefact> artefacts = new List<Artefact>();
 
-
     private void Awake() {
         BattleAction.ResetActions();
     }
@@ -34,6 +33,10 @@ public class PlayerResources : MonoBehaviour {
 
     public void SpendPokebolas() {
         totalPokebolas--;
+    }
+
+    public void GainPokebola (int amount) {
+        totalPokebolas += amount;
     }
 
     public bool HasArtefact (Artefact.ArtefactEnum artefact) {

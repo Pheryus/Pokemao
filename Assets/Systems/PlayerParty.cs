@@ -22,6 +22,20 @@ public class PlayerParty : MonoBehaviour {
         }
     }
 
+    public GameMonster LowerMPMonster {
+        get {
+            float lowMP = 1000;
+            int id = -1;
+            for (int i = 0; i < playerParty.Count; i++) {
+                if (lowMP > playerParty[i].pctMana) {
+                    lowMP = playerParty[i].pctMana;
+                    id = i;
+                }
+            }
+            return playerParty[id];
+        }
+    }
+
     public GameMonster LowerHPMonster {
         get {
             float lowHP = 1000;

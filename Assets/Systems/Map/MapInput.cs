@@ -21,6 +21,8 @@ public class MapInput : GameInput
     public ArtefactRewardUI artefact;
     public EnemyLeader enemyLeader;
 
+    public int mapLevel;
+
     private void Start() {
         Invoke("LateStart", 0.2f);
     }
@@ -48,6 +50,10 @@ public class MapInput : GameInput
         activeNode = mapNode;
         battlefield.startEnemyMonsters = new List<GameMonster>();
 
+        int layer = mapNode.Node.point.y;
+        int difficulty = 0;
+        difficulty = layer / 3;
+
         switch (mapNode.Node.nodeType) {
 
             case Map.NodeType.RestSite:
@@ -59,38 +65,38 @@ public class MapInput : GameInput
                 return;
 
             case Map.NodeType.ChaosEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.chaos));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.chaos));
                 break;
 
             case Map.NodeType.EarthEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.earth));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.earth));
                 break;
 
             case Map.NodeType.FireEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.fire));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.fire));
                 break;
 
             case Map.NodeType.IceEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.ice));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.ice));
                 break;
 
             case Map.NodeType.NatureEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.nature));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.nature));
                 break;
             case Map.NodeType.NeutralEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.normal));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.normal));
                 break;
             case Map.NodeType.ThunderEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.thunder));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.thunder));
                 break;
             case Map.NodeType.WaterEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.water));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.water));
                 break;
             case Map.NodeType.WindEnemy:
-                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(0, Element.wind));
+                battlefield.startEnemyMonsters.Add(GlobalData.i.GetEncounter(difficulty, Element.wind));
                 break;
             case Map.NodeType.TeamBattle:
-                enemyLeader.SetTeam(GlobalData.i.GetTeamEncounter(0));
+                enemyLeader.SetTeam(GlobalData.i.GetTeamEncounter(difficulty));
                 break;
 
         }

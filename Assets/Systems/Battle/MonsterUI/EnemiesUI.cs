@@ -12,7 +12,7 @@ public class MonsterUI
     public GameObject monsterUI;
     public Transform statusPanel;
 
-    public TextMeshProUGUI hpText, manaText;
+    public TextMeshProUGUI hpText, manaText, levelText;
 
     public List<EffectGO> effectsGO = new List<EffectGO>();
 
@@ -107,7 +107,7 @@ public class EnemiesUI : MonoBehaviour {
         activeMonster.fieldPosition = i;
         m.hpText.text = m.activeMonster.gameMonster.actualHp + "/" + m.activeMonster.gameMonster.baseHp;
         m.manaText.text = m.activeMonster.gameMonster.actualMana + "/" + m.activeMonster.gameMonster.baseMana;
-        
+        m.levelText.text = "LV " + (m.activeMonster.gameMonster.monsterLevel + 1).ToString();
 
         for (int j = m.statusPanel.childCount - 1; j >= 0; j--) {
             Destroy(m.statusPanel.GetChild(j).gameObject);

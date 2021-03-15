@@ -10,21 +10,44 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a331bbc92130e1a41a23ac37adce3e00, type: 3}
-  m_Name: WaterGun
+  m_Name: Ice Shard
   m_EditorClassIdentifier: 
   dmgSkills:
-  - baseDmg: 12
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
+    acc: 100
+  - baseDmg: 2
     acc: 100
   onHitACC: 100
-  skillName: Water Gun
+  skillName: Ice Shader
   isSpecial: 1
   onHitEffects: []
   onCastEffects: []
   skillElement: 6
-  _manaCost: 0
-  info: Powerful blast of water.
+  _manaCost: 4
+  info: 'Channel to summon eight ice shards and throw at the opponent.
+
+
+
+    [Agility
+    x Vigor]'
   skillTarget: 0
-  skillSpeed: 0
+  skillSpeed: 15
   extraEffect: 0
-  attackStatus: 0
+  attackStatus: 1
   defenseStatus: 0
+  condition:
+    extraDamagePct: 0
+    casterCondition: 0
+    targetCondition: 0

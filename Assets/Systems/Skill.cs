@@ -11,10 +11,14 @@ public class Effect
     public enum EffectType { regenerate = 0, burn = 1, poison = 2, block = 3, resistance = 4, protection = 5, piercing = 6,
         blind = 7, removeBurn = 8, removePoison = 9, activateNextTurn = 10, skipNextTurn = 11, loseWhenTakeDamage = 12,
         burnOnContact = 13, vigorBuff = 14, focusBuff = 15, wisdomBuff = 16, agilityBuff = 18,
-        cancelChannel = 24, channelSpeed = 25, haste = 28};
+        cancelChannel = 24, channelSpeed = 25, channelSlow = 26, slow = 27, haste = 28, 
+        takesMoreDamageNextAttack = 29, takesLessDamageNextAttack = 30, dealsLessDamageNextAttack = 31, dealsMoreDamageNextAttack = 32,
+        nextSpellCostDoubleMana = 33, nextSpellChannelSlower = 34, nextSpellChannelFaster = 35,
+        nextPhysicSpellDealLessDamage, nextMagicSpellDealLessDamage
+    };
 
     public EffectType effectType;
-    public int intensity;
+    public float intensity;
 
     [HideInInspector]
     public bool gainThisTurn;
@@ -25,7 +29,7 @@ public class Effect
         this.gainThisTurn = gainThisTurn;
     }
 
-    public Effect (EffectType type, int intensity) {
+    public Effect (EffectType type, float intensity) {
         effectType = type;
         this.intensity = intensity;
     }
@@ -34,7 +38,7 @@ public class Effect
 
     }
 
-    public static int IntensityFrom (List<Effect> effects, EffectType type) {
+    public static float IntensityFrom (List<Effect> effects, EffectType type) {
         Effect ef = effects.Find(eff => eff.effectType == type);
         return ef != null ? ef.intensity : 0;
     }
@@ -55,6 +59,17 @@ public class DmgSkill
     public float acc = 100;
 }
 
+
+[System.Serializable]
+public class ExtraDamageCondition
+{
+    public float extraDamagePct;
+
+    public enum Condition { none, belowHalfHP, aboveHalfHP, isBurning, isPoisoned, isChanneling, actionBarAboveHalf, actioNBarBelowHalf, channelAboveHalf, channelBelowHalf};
+
+    public Condition casterCondition;
+    public Condition targetCondition;
+}
 
 public enum Element { normal, fire, water, thunder, earth, wind, ice, chaos, nature};
 
@@ -104,6 +119,9 @@ public class Skill : ScriptableObject {
     public StatusType attackStatus;
 
     public StatusType defenseStatus;
+
+    [SerializeField]
+    public ExtraDamageCondition condition;
 
     public bool TargetNeedInput {
         get {

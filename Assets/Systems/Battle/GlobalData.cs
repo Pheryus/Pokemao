@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MonsterStat { vigor, wisdom, focus, spcDef, speed, maxHP, maxMana };
+public enum MonsterStat { vigor, wisdom, focus, agility };
 
 public class GlobalData : MonoBehaviour
 {
@@ -69,19 +69,13 @@ public class GlobalData : MonoBehaviour
     public string GetStatString (MonsterStat stat) {
         switch (stat) {
             case MonsterStat.vigor:
-                return "Attack";
+                return "Vigor";
             case MonsterStat.wisdom:
-                return "Defense";
+                return "Wisdom";
             case MonsterStat.focus:
-                return "Special Attack";
-            case MonsterStat.spcDef:
-                return "Special Defense";
-            case MonsterStat.speed:
-                return "Speed";
-            case MonsterStat.maxHP:
-                return "Max Hp";
-            case MonsterStat.maxMana:
-                return "Max Mp";
+                return "Focus";
+            case MonsterStat.agility:
+                return "Agility";
         }
         return "";
     }
@@ -130,7 +124,7 @@ public class GlobalData : MonoBehaviour
     }
 
     public MonsterStat GetRandomStat() {
-        return (MonsterStat)Random.Range(0, 5);
+        return (MonsterStat)Random.Range(0, 4);
     }
 
     public Skill GetRandomSkill() {
@@ -164,7 +158,9 @@ public class GlobalData : MonoBehaviour
         if (possibleMonsters.Count == 0) {
             return new GameMonster(errorMonsterSO);
         }
-        return new GameMonster(possibleMonsters[Random.Range(0, possibleMonsters.Count - 1)]);
+        GameMonster newEnemyMonster = new GameMonster(possibleMonsters[Random.Range(0, possibleMonsters.Count - 1)]);
+        newEnemyMonster.LevelUpMonster(difficulty * UnityEngine.Random.Range(1, 2));
+        return newEnemyMonster;
     }
 
 }
